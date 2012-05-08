@@ -129,6 +129,11 @@ Flotr.addPlugin('labels', {
         tick = axis.ticks[i];
         if (!tick.label || !tick.label.length) { continue; }
 
+// SP: 2012/08/05, Added support for horizontal tick alignment        
+        if ( axis.tickXAlign && axis.tickXAlign[i] ) {
+          style.textAlign = axis.tickXAlign[i]; 
+        }
+
         offset = axis.d2p(tick.v);
         if (offset < 0 ||
             offset > (isX ? graph.plotWidth : graph.plotHeight)) { continue; }
